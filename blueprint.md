@@ -18,6 +18,7 @@ This is a simple web application that generates random lottery numbers. Users ca
 *   **HTML:**
     *   Set up the basic structure of the application in `index.html`.
     *   Add a title, a button, and a container for the lottery numbers.
+    *   Add a placeholder message "버튼을 눌러보세요" to the numbers container.
     *   Add a theme toggle button.
 *   **CSS:**
     *   Style the main layout, button, and lottery balls in `style.css`.
