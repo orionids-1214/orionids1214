@@ -1,159 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&display=swap');
+
 :root {
-    --primary-color: #4a90e2;
-    --background-color: #f0f2f5;
-    --container-bg: #ffffff;
-    --text-color: #333333;
-    --ball-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    --button-glow: 0 0 15px rgba(74, 144, 226, 0.6);
-    --pattern-color: #f9f9f9;
+    --primary-color: #ff6f61;
+    --secondary-color: #4a4a4a;
+    --background-color: #f9f9f9;
+    --card-background: #ffffff;
+    --text-color: #333;
+    --light-text-color: #f0f0f0;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --glow-color: rgba(255, 111, 97, 0.5);
+    --font-family: 'Noto Sans KR', sans-serif;
 }
 
-[data-theme="dark"] {
-    --background-color: #1a1a1a;
-    --container-bg: #2d2d2d;
-    --text-color: #f0f2f5;
-    --pattern-color: #252525;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    font-family: var(--font-family);
     background-color: var(--background-color);
     color: var(--text-color);
-    margin: 0;
-    padding: 20px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     min-height: 100vh;
-    background-image: linear-gradient(45deg, var(--pattern-color) 25%, transparent 25%),
-                      linear-gradient(-45deg, var(--pattern-color) 25%, transparent 25%),
-                      linear-gradient(45deg, transparent 75%, var(--pattern-color) 75%),
-                      linear-gradient(-45deg, transparent 75%, var(--pattern-color) 75%);
-    background-size: 20px 20px;
-    background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-    transition: background-color 0.3s, color 0.3s;
+    padding: 2rem;
+    background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8)), url('https://www.transparenttextures.com/patterns/subtle-noise.png');
 }
 
 .container {
-    position: relative;
+    width: 100%;
+    max-width: 800px;
+    padding: 2rem;
+}
+
+header {
     text-align: center;
-    background: var(--container-bg);
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    max-width: 90%;
-    width: 500px;
-    transition: background-color 0.3s, box-shadow 0.3s;
+    margin-bottom: 2rem;
 }
 
-.theme-toggle {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-}
-
-#theme-button {
-    background: none;
-    border: 2px solid var(--primary-color);
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.2rem;
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
     color: var(--primary-color);
-    transition: all 0.2s ease;
+    margin-bottom: 0.5rem;
 }
 
-#theme-button:hover {
-    background: var(--primary-color);
-    color: white;
+header p {
+    font-size: 1.1rem;
+    color: var(--secondary-color);
 }
 
-h1 {
-    color: var(--primary-color);
-    margin-bottom: 30px;
-}
-
-#lotto-numbers-container {
+#recipe-form {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.input-group {
+    display: flex;
     align-items: center;
-    gap: 15px;
-    margin-bottom: 40px;
-    flex-wrap: wrap;
-    min-height: 60px;
+    background-color: var(--card-background);
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 4px 12px var(--shadow-color);
 }
 
-.placeholder-text {
-    font-size: 1.2rem;
-    color: var(--text-color);
-    opacity: 0.6;
-    margin: 0;
+.input-group i {
+    color: var(--primary-color);
+    margin-right: 0.75rem;
 }
 
-#generate-button {
-    background-color: var(--primary-color);
-    color: white;
+#youtube-url {
+    flex-grow: 1;
     border: none;
-    padding: 15px 30px;
-    font-size: 1.2em;
-    border-radius: 50px;
+    outline: none;
+    padding: 0.75rem 0;
+    font-size: 1rem;
+    background: transparent;
+}
+
+#extract-button {
+    background-color: var(--primary-color);
+    color: var(--light-text-color);
+    border: none;
+    border-radius: 8px;
+    padding: 1rem;
+    font-size: 1.1rem;
+    font-weight: 700;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: 0 4px 10px rgba(74, 144, 226, 0.4);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px var(--glow-color);
+    position: relative;
 }
 
-#generate-button:hover {
+#extract-button:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(74, 144, 226, 0.5);
+    box-shadow: 0 6px 20px var(--glow-color);
 }
 
-#generate-button:active {
-    transform: translateY(0);
-    box-shadow: var(--button-glow);
-}
-
-lotto-ball {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
+.loading-spinner {
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid var(--light-text-color);
     border-radius: 50%;
-    box-shadow: var(--ball-shadow);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 1.4em;
-    font-weight: bold;
-    animation: fadeIn 0.5s ease-in-out;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#recipe-display {
+    margin-top: 2rem;
+}
+
+recipe-card {
+    display: block;
+    background-color: var(--card-background);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 8px 30px var(--shadow-color);
+    margin-top: 1rem;
+    animation: fadeIn 0.5s ease-out;
 }
 
 @keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: scale(0.5);
-    }
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-@media (max-width: 600px) {
-    .container {
-        padding: 20px;
-    }
-    h1 {
-        font-size: 1.8em;
-    }
-    lotto-ball {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2em;
-    }
-    #lotto-numbers-container {
-        gap: 10px;
-    }
+@media (max-width: 768px) {
+    body { padding: 1rem; }
+    .container { padding: 1rem; }
+    header h1 { font-size: 2rem; }
+    header p { font-size: 1rem; }
 }
